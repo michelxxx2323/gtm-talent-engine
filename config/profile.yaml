@@ -1,0 +1,63 @@
+# Who the engine is hiring-hunting for. Read by the fit scorer (phase 2)
+# and the outreach drafter (phase 4). Sources: job-fit-screener/cv_intl.txt
+# and preferencias_intl.txt. Keep it in English: it goes into prompts and
+# the public case.
+
+candidate:
+  name: Michel Soares
+  base: São Paulo, Brazil (UTC-3, overlaps US East mornings and UK/EU afternoons)
+  english: Advanced (C1)
+  linkedin: linkedin.com/in/michelsoaresafonso
+  portfolio: https://michelsoares.vercel.app
+  engagement: [full-time remote, contractor/PJ]  # paid in USD/EUR/GBP
+
+# The four role fronts. A company can fit several; the scorer rates each.
+fronts:
+  gtm_engineer:
+    label: GTM Engineer / Clay builder
+    looks_for: [Clay tables and waterfalls, enrichment, signal-based outbound, API/webhook glue]
+  revops:
+    label: RevOps / GTM Ops
+    looks_for: [CRM hygiene and setup (HubSpot, Attio, Salesforce user-level), pipeline reporting, forecasting, process design]
+  ai_automation:
+    label: AI Automation
+    looks_for: [n8n/Make/Zapier, LLM agents, AI research and scoring steps, internal tooling]
+  campaign_ops:
+    label: Delivery / Campaign Ops
+    looks_for: [list building, copy variants, Smartlead/Instantly/HeyReach ops, deliverability, client reporting]
+
+# Evidence the outreach can point to. Every claim must be backed by one of these.
+proof_points:
+  - id: creator_supply_engine
+    what: Screened 1,500+ B2B creators in Brazil and the US with Clay, Apollo, Attio and n8n; blind double vetting (Claude + a second model) with human review on splits.
+    link: https://michelsoares.vercel.app/creators.html?lang=en
+    fronts: [gtm_engineer, ai_automation, campaign_ops]
+  - id: brax_sdr_agent
+    what: AI SDR live 24/7 for a B2B fintech on WhatsApp and email; qualifies inbound, routes, logs to HubSpot, escalates to humans on Slack.
+    fronts: [ai_automation, revops]
+  - id: job_fit_screener
+    what: Pipeline that collects ~3,500 job posts per run from 18 sources and ranks them with an LLM; labeled eval set raised ranking accuracy from 52% to 70%.
+    fronts: [gtm_engineer, ai_automation]
+  - id: radar_de_editais
+    what: Daily agent that monitors public innovation calls, extracts requirements, scores fit and eligibility, and feeds a web app where the team decides.
+    fronts: [ai_automation, revops]
+  - id: totvs_sales_ops
+    what: Sales Ops and GTM at TOTVS (largest LatAm ERP vendor); moved 80% of a unit's reports to BI; GTM for 6+ product launches.
+    fronts: [revops]
+  - id: this_engine
+    what: This engine itself: found, researched and scored 100 GTM agencies with the same stack they sell.
+    fronts: [gtm_engineer, ai_automation, campaign_ops, revops]
+
+# Hard constraints, mirrored as gates in config/rubric.md.
+not_a_fit:
+  - role requires managing people
+  - US-only / EU-only hiring, or must be authorized to work in a given country
+  - on-site or hybrid outside Brazil
+  - quota-carrying sales (SDR/BDR/AE)
+  - core of the job is advanced SQL/Python or software engineering
+  - native-level English required, or Spanish required
+
+target_market:
+  regions: [United States, Canada, United Kingdom, Europe]
+  company_size: 2-200 employees
+  company_type: service business (agency, studio, consultancy, fractional team) selling GTM, Clay, RevOps, outbound or AI automation work

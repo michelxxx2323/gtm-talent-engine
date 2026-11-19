@@ -1,0 +1,121 @@
+# Rubric v2 (2026-11-08), recalibrated on Michel's labels of the 20-company
+# pilot (data/out/pilot_labels.xlsx). v1 is in git history / rubric.md notes.
+# Both evaluators (Claude and Jev) get exactly these texts, blind to each
+# other. Levels are 0-4; points for a criterion = weight * level / 4.
+#
+# What changed from v1, and why (Michel's labels):
+# - Size no longer penalizes big agencies: he rated large agencies A because
+#   they are structured and known. "size_fit" became "structure".
+# - "remote_openness" became "team_geography": where the team works, scored
+#   from Clay headcount by country.
+# - Solo shops and companies with no recent evidence are capped at C, not Out
+#   ("I would work with a one person agency"). Out is only for companies that
+#   are closed or not a service business.
+# - v2.2 (2026-11-08): cap 'remote_possible' restores the remote-work check v1 had
+#   (lost when remote_openness became team_geography; Michel's hard rule: no on-site
+#   or hybrid roles outside Brazil).
+# - Hiring keeps weight 20: Michel's reasons did not mention it only because he had
+#   no access to hiring data in his search, not because it matters less (2026-11-08).
+
+question: >-
+  Is this company a good employer target for a Brazil-based GTM operator (Clay,
+  RevOps, AI automation, outbound campaign ops; advanced English; no people
+  management; no quota-carrying sales)?
+
+# Any gate below 0.5 -> Out.
+gates:
+  operating: >-
+    The company is still operating. Answer NO only with clear evidence it closed:
+    the domain is parked or for sale, the site says it shut down, or it was
+    absorbed and no longer exists. A slow, blocked or JavaScript-only site is NOT
+    evidence of closure
+  service_business: >-
+    The company sells services (agency, studio, consultancy, done-for-you, managed
+    service) in Clay, GTM engineering, outbound or lead generation, RevOps/CRM or
+    AI automation to B2B clients. NO for a software product, data vendor,
+    marketplace, course or community whose core is not client service work
+
+# Any cap below 0.5 -> the band can be at most C.
+caps:
+  has_team: >-
+    The company has a team beyond one person: a team page, several named people,
+    "our team" with evidence, contractors, open roles, or a headcount of 2 or more
+  recent_activity: >-
+    There is dated evidence of activity in the last 12 months (a post, case
+    study, job, or date or copyright year of 2025 or 2026 on the site). If the
+    site blocks automated access (HTTP 403) or only renders with JavaScript,
+    answer YES unless other evidence shows the company is inactive: a blocked
+    site is not a sign of inactivity. A site that is down (no response, 5xx)
+    with no other recent evidence is NO
+  remote_possible: >-
+    Someone could work for this company fully remotely from Brazil (as an
+    employee or contractor). Answer NO only when the evidence shows the work is
+    on-site or hybrid at an office (office perks such as catered lunches,
+    "join us in our office", a hybrid policy, roles listed only in one city),
+    or that the company hires only in one country with no contractors abroad.
+    Remote-first, a distributed team, remote roles or contractors abroad are
+    YES. With no information either way, answer YES
+
+criteria:
+  clay_depth:
+    weight: 20
+    instructions: How deep the company is in Clay and the modern GTM tool ecosystem
+    levels:
+      - No mention of Clay or modern GTM tooling
+      - Strong GTM or lead-generation know-how but Clay only in passing or not at all
+      - Clay or GTM tooling is a clear part of the offer (listed Clay partner, tool pages, some builds described)
+      - Clay is central to the offer (Advanced Artisan, public builds, playbooks or case studies done in Clay)
+      - Recognized Clay leader (Elite Studio or Studio partner tier, Clay-certified team, ex-Clay founders)
+  structure:
+    weight: 20
+    instructions: How established and structured the agency is as an employer
+    levels:
+      - One person, or almost no information about the company
+      - Founder plus a few helpers, little visible structure
+      - Small team (about 5-15) with defined services and some case studies
+      - Structured agency (15+ people, or defined roles/departments and many case studies)
+      - Well-known, established agency (strong brand, industry recognition, or 50+ people with clear structure)
+  team_geography:
+    weight: 20
+    instructions: Where the company's people work
+    levels:
+      - Team concentrated outside North America and Europe, with only the founder there
+      - Unknown
+      - Mixed, with part of the team in North America or Europe
+      - Team mainly in North America or Europe
+      - Team in North America or Europe and the company already employs people in Brazil
+  fronts_overlap:
+    weight: 10
+    instructions: >-
+      How many of these fronts are core services of the company: (1) GTM engineering
+      / Clay builds, (2) RevOps / CRM / GTM ops, (3) AI automation (n8n, Make, agents),
+      (4) outbound campaign delivery (lists, copy, sending tools, deliverability)
+    levels:
+      - None of the four fronts is a core service
+      - One front, adjacent to the others
+      - One front as the clear core
+      - Two fronts are core services
+      - Three or four fronts are core services
+  reachability:
+    weight: 10
+    instructions: How easy it is to identify and reach a decision maker with a relevant opener
+    levels:
+      - No named person
+      - A named person, but no public activity
+      - Founder or leader named with a LinkedIn profile
+      - Founder or leader named and posts or writes publicly
+      - Founder is well known in the industry, or writes often about GTM topics we can reference
+  hiring_growth:
+    weight: 20
+    instructions: Signs the company is hiring or growing now
+    levels:
+      - No sign of hiring or growth
+      - Indirect signs (new services, new clients, growing content output)
+      - A careers page or "join us" invitation without specific open roles
+      - An open role now, of any kind, or headcount up 20%+ in 12 months
+      - An open role now in GTM engineering, RevOps, automation or campaign ops
+
+bands:
+  A: 70   # wave 1
+  B: 50   # wave 2
+secondary_region_penalty: 10

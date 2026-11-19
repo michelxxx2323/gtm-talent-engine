@@ -1,0 +1,4 @@
+{
+  "_note": "Domains fixed by hand when the guessed one was wrong. Key = GTM Daily agency name; keys starting with _ are ignored. Found with Clay's 'Find company domain' (Google, 0.2 credit) and checked against each site's own title and description. The real file holds 2 fixes and stays in the private repository.",
+  "_example Acme": {"domain": "acmeoutbound.com", "evidence": "acmeoutbound.com title matches the GTM Daily listing; acme.com is an unrelated manufacturer."}
+}
