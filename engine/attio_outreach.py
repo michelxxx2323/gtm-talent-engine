@@ -36,7 +36,7 @@ def note_text(c: dict) -> str:
                        ("4. Note to the backup contact (after 10 days)", "backup_note")]:
         if c[key]:
             parts += ["", f"{title}:", c[key]]
-    parts += ["", "Drafts from the GTM Talent Engine. Michel reviews and sends by hand. Replace [LOOM] before sending."]
+    parts += ["", "Drafts from the GTM Talent Engine. Michel reviews and sends by hand."]
     return "\n".join(parts)
 
 
