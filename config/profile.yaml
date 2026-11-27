@@ -29,11 +29,11 @@ fronts:
 # Evidence the outreach can point to. Every claim must be backed by one of these.
 proof_points:
   - id: creator_supply_engine
-    what: Screened 1,500+ B2B creators in Brazil and the US with Clay, Apollo, Attio and n8n; blind double vetting (Claude + a second model) with human review on splits.
+    what: Sourced and scored 1,234 B2B creators in Brazil and the US (669 BR, 565 US) with Clay, Apollo, Attio and n8n; blind double vetting (Claude + a second model) with human review on splits.
     link: https://michelsoares.vercel.app/creators.html?lang=en
     fronts: [gtm_engineer, ai_automation, campaign_ops]
   - id: brax_sdr_agent
-    what: AI SDR live 24/7 for a B2B fintech on WhatsApp and email; qualifies inbound, routes, logs to HubSpot, escalates to humans on Slack.
+    what: AI SDR for BRAX, a fictional B2B fintech, live 24/7 on WhatsApp and email (public demo); qualifies inbound, routes, logs to HubSpot, escalates to humans on Slack.
     fronts: [ai_automation, revops]
   - id: job_fit_screener
     what: Pipeline that collects ~3,500 job posts per run from 18 sources and ranks them with an LLM; labeled eval set raised ranking accuracy from 52% to 70%.
